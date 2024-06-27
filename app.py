@@ -50,3 +50,17 @@ def delete_task(task_id):
         return jsonify({"message": "Task deleted"}), 200
     else:
         return jsonify({"error": "Task not found"}), 404
+    
+SWAGGER_URL = '/swagger'
+API_URL = '/static/swagger.json'
+swaggerui_blueprint = get_swaggerui_blueprint(
+    SWAGGER_URL,
+    API_URL,
+    config={
+        'app_name': "To-Do List API"
+    }
+)
+app.register_blueprint(swaggerui_blueprint, url_prefix=SWAGGER_URL)
+
+if __name__ == '__main__':
+    app.run(debug=True)
