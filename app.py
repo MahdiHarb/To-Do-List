@@ -22,3 +22,10 @@ def get_task(task_id):
         return jsonify({"id": str(task["_id"]), "task": task["task"]}), 200
     else:
         return jsonify({"error": "Task not found"}), 404
+    
+@app.route('/tasks', methods=['POST'])
+def create_task():
+    task = request.json
+    task_id = mongo.db.tasks.insert_one(task).inserted_id
+    new_task = mongo.db.tasks.find_one({"_id": ObjectId(task_id)})
+    return jsonify({"id": str(new_task["_id"]), "task": new_task["task"]}), 201
