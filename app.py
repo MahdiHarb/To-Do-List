@@ -29,3 +29,16 @@ def create_task():
     task_id = mongo.db.tasks.insert_one(task).inserted_id
     new_task = mongo.db.tasks.find_one({"_id": ObjectId(task_id)})
     return jsonify({"id": str(new_task["_id"]), "task": new_task["task"]}), 201
+
+@app.route('/tasks/<task_id>', methods=['PUT'])
+def update_task(task_id):
+    task = request.json
+    updated_task = mongo.db.tasks.find_one_and_update(
+        {"_id": ObjectId(task_id)},
+        {"$set": {"task": task["task"]}},
+        return_document=True
+    )
+    if updated_task:
+        return jsonify({"id": str(updated_task["_id"]), "task": updated_task["task"]}), 200
+    else:
+        return jsonify({"error": "Task not found"}), 404
