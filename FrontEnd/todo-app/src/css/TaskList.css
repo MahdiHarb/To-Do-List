@@ -1,0 +1,21 @@
+.task-list {
+    margin-top: 20px;
+  }
+  
+  .tasks-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+  }
+  
+  .tasks-table th,
+  .tasks-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  .tasks-table th {
+    background-color: #f2f2f2;
+  }
+  
