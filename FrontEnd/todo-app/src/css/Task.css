@@ -1,0 +1,30 @@
+.btn {
+    padding: 8px 12px;
+    margin-left: 8px;
+    background-color: blue;
+    color: white;
+    border: none;
+    cursor: pointer;
+    
+  }
+  
+  .btn:hover {
+    background-color: darkblue;
+  }
+  
+  .btn-cancel {
+    background-color: gray;
+  }
+  
+  .btn-cancel:hover {
+    background-color: darkgray;
+  }
+  
+  .btn-delete {
+    background-color: red;
+  }
+  
+  .btn-delete:hover {
+    background-color: darkred;
+  }
+  
